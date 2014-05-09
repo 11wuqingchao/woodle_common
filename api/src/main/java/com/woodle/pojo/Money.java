@@ -6,12 +6,13 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 /**
- * Created with IntelliJ IDEA.
+ * 用于表示记账金额, 标准6位小数
  * User: wuqingchao
  * Time: 14-5-9 上午12:06
  */
-public final class Money implements Comparable<Money>, Serializable{
+public final class Money implements Serializable, Comparable<Money>{
 
+    private final long serialVersionUID = 1L;
 
     private static final RoundingMode DEFAULT_ROUNDING = RoundingMode.HALF_EVEN;
 
@@ -41,6 +42,11 @@ public final class Money implements Comparable<Money>, Serializable{
         return of(BigDecimal.valueOf(amount, PARSE_SCALE));
     }
 
+    /**
+     * sum
+     * @param monies   money need to be sum
+     * @return  sum of all monies
+     */
     public static Money total(Money... monies) {
         if (monies.length == 0) {
             throw new IllegalArgumentException("Money array must not be empty");
@@ -51,8 +57,6 @@ public final class Money implements Comparable<Money>, Serializable{
         }
         return total;
     }
-
-
 
     private Money with(BigDecimal newAmount) {
         if (newAmount.equals(amount)) {
@@ -98,7 +102,7 @@ public final class Money implements Comparable<Money>, Serializable{
     }
 
     /**
-     * 检查 值 <= 0
+     * check if the amount is less or equal than zero
      *
      * @return true if the amount is zero or less
      */
