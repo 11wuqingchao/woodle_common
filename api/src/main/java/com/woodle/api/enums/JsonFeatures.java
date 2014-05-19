@@ -7,11 +7,11 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 /**
- * Created with IntelliJ IDEA.
+ * json数据特征集合
  * User: wuqingchao
  * Time: 14-5-18 下午9:57
  */
-public enum JsonFeature {
+public enum JsonFeatures {
 
     AUTO_CLOSE_TARGET(JsonGenerator.Feature.AUTO_CLOSE_TARGET, true),
 
@@ -38,7 +38,7 @@ public enum JsonFeature {
 
     static {
         int flags = 0;
-        for (JsonFeature f : values()) {
+        for (JsonFeatures f : values()) {
             if (f.enabledByDefault()) {
                 flags |= f.getMask();
             }
@@ -47,18 +47,18 @@ public enum JsonFeature {
     }
 
     private final Object feature;
-    private final boolean enabledByDefault;
+    private final boolean enableByDefault;
     private final int mask;
 
 
-    private JsonFeature(Object feature, boolean enabledByDefault) {
+    private JsonFeatures(Object feature, boolean enableByDefault) {
         this.feature = feature;
-        this.enabledByDefault = enabledByDefault;
+        this.enableByDefault = enableByDefault;
         mask = 1 << ordinal();
     }
 
     public boolean enabledByDefault() {
-        return enabledByDefault;
+        return enableByDefault;
     }
 
     int getMask() {
