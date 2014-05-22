@@ -61,23 +61,23 @@ public enum JsonFeatures {
         return enableByDefault;
     }
 
-    int getMask() {
+    public int getMask() {
         return mask;
     }
 
-    Object getFeature() {
+    public Object getFeature() {
         return feature;
     }
 
-    boolean isEnabled(long flags) {
+    public boolean isEnabled(long flags) {
         return (flags & mask) != 0;
     }
 
-    long enable(long flags) {
+    public long enable(long flags) {
         return flags | mask;
     }
 
-    long disable(long flags){
+    public long disable(long flags){
         return flags & (~mask);
     }
 
