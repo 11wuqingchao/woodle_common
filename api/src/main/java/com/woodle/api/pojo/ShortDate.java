@@ -1,4 +1,4 @@
-package com.woodle.pojo;
+package com.woodle.api.pojo;
 
 import java.io.Serializable;
 import java.util.Calendar;
