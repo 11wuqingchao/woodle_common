@@ -37,6 +37,15 @@ public class ShortDate implements Serializable, Comparable<ShortDate> {
         return intValue;
     }
 
+    public int getMonthOfYear() {
+        return intValue / 100 % 100;
+    }
+
+    @SuppressWarnings("deprecation")
+    public int getDayOfWeek() {
+        return toDate().getDate();
+    }
+
 
     /**
      * 返回 yyyy-MM-dd 的字符串表现形式
